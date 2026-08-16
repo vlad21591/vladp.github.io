@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- SEO -->
+	<title>Vlad P. — Data Analyst Portfolio</title>
+	<meta name="description" content="Data analyst portfolio of Vlad P. — projects in SQL, Python, Power BI and Excel, covering customer churn, sales analysis and machine learning." />
+	<meta name="author" content="Vlad P." />
+	<link rel="canonical" href="https://vlad21591.github.io/" />
+
+	<!-- Open Graph / social sharing -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Vlad P. — Data Analyst Portfolio" />
+	<meta property="og:description" content="Projects in SQL, Python, Power BI and Excel — churn analysis, dashboards, and machine learning." />
+	<meta property="og:image" content="images/pic02.jpg" />
+	<meta property="og:url" content="https://vlad21591.github.io/" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<style>
+		:root {
+			--bg: #0e1117;
+			--surface: #161b22;
+			--surface-2: #1c232d;
+			--border: #263141;
+			--text: #e6edf3;
+			--muted: #9aa7b4;
+			--accent: #4f9dff;
+			--accent-soft: rgba(79, 157, 255, 0.12);
+			--radius: 14px;
+			--max: 1080px;
+		}
+
+		* { box-sizing: border-box; margin: 0; padding: 0; }
+
+		html { scroll-behavior: smooth; }
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a { color: var(--accent); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+		/* Header / nav */
+		header {
+			position: sticky; top: 0; z-index: 10;
+			background: rgba(14, 17, 23, 0.85);
+			backdrop-filter: blur(8px);
+			border-bottom: 1px solid var(--border);
+		}
+		.nav {
+			display: flex; align-items: center; justify-content: space-between;
+			height: 64px;
+		}
+		.nav .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px; }
+		.nav .links { display: flex; gap: 26px; list-style: none; align-items: center; }
+		.nav .links a { color: var(--muted); font-size: 0.95rem; }
+		.nav .links a:hover { color: var(--text); text-decoration: none; }
+
+		/* Hero */
+		.hero { padding: 90px 0 60px; }
+		.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin-bottom: 18px; }
+		.hero h1 .accent { color: var(--accent); }
+		.hero p { color: var(--muted); font-size: 1.1rem; max-width: 680px; }
+		.hero .cta { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+		.btn {
+			display: inline-block; padding: 12px 22px; border-radius: 10px;
+			font-weight: 600; font-size: 0.95rem; transition: all 0.18s ease;
+			border: 1px solid var(--border); cursor: pointer;
+		}
+		.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+		.btn-primary:hover { filter: brightness(1.08); text-decoration: none; }
+		.btn-ghost { background: transparent; color: var(--text); }
+		.btn-ghost:hover { background: var(--surface-2); text-decoration: none; }
+
+		/* Section headings */
+		.section { padding: 64px 0; }
+		.section h2 {
+			font-size: 1.8rem; margin-bottom: 8px;
+			display: inline-block;
+		}
+		.section .sub { color: var(--muted); margin-bottom: 36px; }
+
+		/* Skills */
+		.skills-grid {
+			display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 20px;
+		}
+		.skill-card {
+			background: var(--surface); border: 1px solid var(--border);
+			border-radius: var(--radius); padding: 22px;
+		}
+		.skill-card h3 { font-size: 1.05rem; margin-bottom: 14px; }
+		.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+		.tag {
+			background: var(--accent-soft); color: var(--accent);
+			padding: 5px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
+		}
+
+		/* Projects */
+		.projects {
+			display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 24px;
+		}
+		.card {
+			background: var(--surface); border: 1px solid var(--border);
+			border-radius: var(--radius); overflow: hidden;
+			display: flex; flex-direction: column;
+			transition: transform 0.18s ease, border-color 0.18s ease;
+		}
+		.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+		.card .thumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
+		.card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+		.card .body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+		.card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+		.card .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+		.card .badge {
+			font-size: 0.72rem; font-weight: 600; color: var(--muted);
+			border: 1px solid var(--border); padding: 3px 9px; border-radius: 6px;
+		}
+		.card p { color: var(--muted); font-size: 0.92rem; flex: 1; }
+		.card .actions { margin-top: 18px; }
+
+		/* Contact */
+		.contact-wrap {
+			display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+		}
+		.contact-info p { color: var(--muted); margin-bottom: 16px; }
+		.contact-info .row { margin-bottom: 14px; }
+		.contact-info .row span { display: block; color: var(--text); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+		form .field { margin-bottom: 16px; }
+		form label { display: block; font-size: 0.85rem; margin-bottom: 6px; color: var(--muted); }
+		form input, form textarea {
+			width: 100%; padding: 11px 14px; background: var(--surface);
+			border: 1px solid var(--border); border-radius: 9px; color: var(--text);
+			font-family: inherit; font-size: 0.95rem;
+		}
+		form input:focus, form textarea:focus { outline: none; border-color: var(--accent); }
+		form textarea { resize: vertical; min-height: 120px; }
+
+		/* Footer */
+		footer {
+			border-top: 1px solid var(--border); padding: 32px 0;
+			color: var(--muted); font-size: 0.9rem;
+			display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+		}
+		footer .social { display: flex; gap: 18px; }
+
+		@media (max-width: 720px) {
+			.nav .links { gap: 16px; }
+			.contact-wrap { grid-template-columns: 1fr; }
+			.hero { padding: 60px 0 40px; }
+		}
+	</style>
+</head>
+<body>
+
+	<header>
+		<div class="container nav">
+			<div class="brand">Vlad P.</div>
+			<ul class="links">
+				<li><a href="#about">About</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="assets/resume.pdf" download>Résumé</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<!-- Hero -->
+	<section class="hero">
+		<div class="container">
+			<h1>Vlad — <span class="accent">Data Analyst</span><br />turning raw data into decisions that move the business.</h1>
+			<p>
+				I'm a data analyst focused on marketing and product analytics — cleaning and preparing data,
+				building interactive dashboards, and running analysis to answer real business questions.
+				I've worked hands-on with SQL, Excel and Power BI to measure campaign performance,
+				understand customer behavior, and surface insights that drive decisions.
+			</p>
+			<p style="margin-top:14px; color:var(--accent); font-weight:600;">Currently open to data, marketing, and product analyst roles.</p>
+			<div class="cta">
+				<a href="#projects" class="btn btn-primary">View my work</a>
+				<a href="assets/resume.pdf" class="btn btn-ghost" download>Download résumé</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- About / Skills -->
+	<section class="section" id="about">
+		<div class="container">
+			<h2>Skills &amp; Tools</h2>
+			<p class="sub">The stack I use to take data from raw to insight.</p>
+			<div class="skills-grid">
+				<div class="skill-card">
+					<h3>Data &amp; Querying</h3>
+					<div class="tags">
+						<span class="tag">SQL</span>
+						<span class="tag">Excel</span>
+						<span class="tag">Data Cleaning</span>
+						<span class="tag">ETL</span>
+					</div>
+				</div>
+				<div class="skill-card">
+					<h3>Python &amp; Analysis</h3>
+					<div class="tags">
+						<span class="tag">Python</span>
+						<span class="tag">Pandas</span>
+						<span class="tag">NumPy</span>
+						<span class="tag">scikit-learn</span>
+					</div>
+				</div>
+				<div class="skill-card">
+					<h3>BI &amp; Visualization</h3>
+					<div class="tags">
+						<span class="tag">Power BI</span>
+						<span class="tag">Data Modeling</span>
+						<span class="tag">Dashboards</span>
+						<span class="tag">Reporting</span>
+					</div>
+				</div>
+				<div class="skill-card">
+					<h3>Product &amp; Marketing Analytics</h3>
+					<div class="tags">
+						<span class="tag">A/B Testing</span>
+						<span class="tag">KPI Reporting</span>
+						<span class="tag">Customer Segmentation</span>
+						<span class="tag">Funnel Analysis</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Projects -->
+	<section class="section" id="projects">
+		<div class="container">
+			<h2>Projects</h2>
+			<p class="sub">A selection of analysis, dashboard and machine-learning work.</p>
+			<div class="projects">
+
+				<article class="card">
+					<a class="thumb" href="https://github.com/vlad21591/PowerBI_Project.git"><img src="images/pic02.jpg" alt="Power BI customer churn dashboard" /></a>
+					<div class="body">
+						<h3>Customer Analysis Dashboard</h3>
+						<div class="badges"><span class="badge">Power BI</span><span class="badge">DAX</span></div>
+						<p>Analyzed a 100K-row banking dataset to identify key drivers of customer churn. Built two interactive dashboards — churn with dynamic filters by geography, gender, age group and card type, plus a risk &amp; financial page highlighting balance at risk and credit scores. Engineered custom DAX measures (Churn Rate, Balance at Risk, Revenue Lost, Avg Credit Score) to surface actionable insights.</p>
+						<div class="actions"><a href="https://github.com/vlad21591/PowerBI_Project.git" class="btn btn-ghost">Repository →</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="thumb" href="https://github.com/vlad21591/Sales-Analysis.git"><img src="images/Img1.jpg" alt="Sales analysis with Python Pandas" /></a>
+					<div class="body">
+						<h3>Sales Analysis</h3>
+						<div class="badges"><span class="badge">Python</span><span class="badge">Pandas</span></div>
+						<p>Data analysis using Python's Pandas library — a flexible, open-source tool widely used in analytics. Serves as a reusable template for data exploration and manipulation tasks, and a starting point for wider analysis projects.</p>
+						<div class="actions"><a href="https://github.com/vlad21591/Sales-Analysis.git" class="btn btn-ghost">Repository →</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="thumb" href="https://github.com/vlad21591/Data-Science.git"><img src="images/pic06.jpg" alt="Heart condition prediction project" /></a>
+					<div class="body">
+						<h3>Machine Learning &amp; Data Science</h3>
+						<div class="badges"><span class="badge">Python</span><span class="badge">scikit-learn</span></div>
+						<p>Prediction of a heart condition using 5 different algorithms across 13 attributes. Used Pandas to analyze the dataset and Matplotlib for visualization, comparing model performance to find the strongest predictor.</p>
+						<div class="actions"><a href="https://github.com/vlad21591/Data-Science.git" class="btn btn-ghost">Repository →</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="thumb" href="https://github.com/vlad21591/MachineLearningAlgorithms.git"><img src="images/pic04.jpg" alt="Titanic survival prediction models" /></a>
+					<div class="body">
+						<h3>Machine-Learning Project (Kaggle)</h3>
+						<div class="badges"><span class="badge">Python</span><span class="badge">Kaggle</span></div>
+						<p>Built and compared multiple models to predict outcomes for a given dataset — here, which passengers survived the Titanic shipwreck. A classic classification problem used to benchmark modeling approaches.</p>
+						<div class="actions"><a href="https://github.com/vlad21591/MachineLearningAlgorithms.git" class="btn btn-ghost">Repository →</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="thumb" href="https://github.com/vlad21591/HTML-Web-Crawler.git"><img src="images/Img2.jpg" alt="HTML web crawler in Python" /></a>
+					<div class="body">
+						<h3>HTML Web Crawler</h3>
+						<div class="badges"><span class="badge">Python</span></div>
+						<p>A simple Python tool that crawls a web page and extracts the HTML links present on it — a lightweight starting point for scraping and link-mapping tasks.</p>
+						<div class="actions"><a href="https://github.com/vlad21591/HTML-Web-Crawler.git" class="btn btn-ghost">Repository →</a></div>
+					</div>
+				</article>
+
+				<article class="card">
+					<a class="thumb" href="https://github.com/vlad21591/Selenium/tree/master"><img src="images/pic7.jpg" alt="Browser automation with Selenium" /></a>
+					<div class="body">
+						<h3>Browser Automation — Selenium</h3>
+						<div class="badges"><span class="badge">Python</span><span class="badge">Selenium</span></div>
+						<p>A Python project using Selenium to automate browser activity — navigating pages, filling forms and driving repetitive tasks programmatically.</p>
+						<div class="actions"><a href="https://github.com/vlad21591/Selenium/tree/master" class="btn btn-ghost">Repository →</a></div>
+					</div>
+				</article>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section class="section" id="contact">
+		<div class="container">
+			<h2>Get in touch</h2>
+			<p class="sub">Have a role or project in mind? I'd love to hear from you.</p>
+			<div class="contact-wrap">
+				<div class="contact-info">
+					<div class="row"><span>Email</span><a href="mailto:vlad.census@gmail.com">vlad.census@gmail.com</a></div>
+					<div class="row"><span>Phone</span><a href="tel:+972546305532">054-630-5532</a></div>
+					<div class="row"><span>Location</span>Ramat Ahail, Tel-Aviv</div>
+					<div class="row"><span>LinkedIn</span><a href="https://www.linkedin.com/in/vladp11">linkedin.com/in/vladp11</a></div>
+				</div>
+				<!-- Formspree: replace YOUR_ID with your Formspree form ID to receive submissions by email -->
+				<form action="https://formspree.io/f/YOUR_ID" method="POST">
+					<div class="field">
+						<label for="name">Name</label>
+						<input type="text" id="name" name="name" required />
+					</div>
+					<div class="field">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" required />
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea id="message" name="message" required></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Send message</button>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%;">
+			<span>© 2026 Vlad P.</span>
+			<div class="social">
+				<a href="https://www.linkedin.com/in/vladp11">LinkedIn</a>
+				<a href="https://github.com/vlad21591">GitHub</a>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
