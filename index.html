@@ -96,15 +96,15 @@
 
 		/* Skills */
 		.skills-grid {
-			display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 			gap: 20px;
 		}
 		.skill-card {
 			background: var(--surface); border: 1px solid var(--border);
 			border-radius: var(--radius); padding: 22px;
-			display: flex; flex-direction: column; justify-content: center;
+			display: flex; flex-direction: column; justify-content: flex-start;
 		}
-		.skill-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+		.skill-card h3 { font-size: 1rem; margin-bottom: 8px; white-space: nowrap; }
 		.skill-card .skill-desc {
 			color: var(--muted); font-size: 0.9rem; line-height: 1.5;
 			margin-bottom: 16px;
@@ -240,7 +240,7 @@
 					</div>
 				</div>
 				<div class="skill-card">
-					<h3>Product &amp; Marketing Analytics</h3>
+					<h3>Marketing &amp; Product</h3>
 					<p class="skill-desc">Measuring what drives growth, retention and conversion.</p>
 					<div class="tags">
 						<span class="tag">A/B Testing</span>
