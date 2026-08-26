@@ -143,21 +143,9 @@
 		.card .actions { margin-top: 18px; }
 
 		/* Contact */
-		.contact-wrap {
-			display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-		}
 		.contact-info p { color: var(--muted); margin-bottom: 16px; }
 		.contact-info .row { margin-bottom: 14px; }
 		.contact-info .row span { display: block; color: var(--text); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
-		form .field { margin-bottom: 16px; }
-		form label { display: block; font-size: 0.85rem; margin-bottom: 6px; color: var(--muted); }
-		form input, form textarea {
-			width: 100%; padding: 11px 14px; background: var(--surface);
-			border: 1px solid var(--border); border-radius: 9px; color: var(--text);
-			font-family: inherit; font-size: 0.95rem;
-		}
-		form input:focus, form textarea:focus { outline: none; border-color: var(--accent); }
-		form textarea { resize: vertical; min-height: 120px; }
 
 		/* Footer */
 		footer {
@@ -169,7 +157,6 @@
 
 		@media (max-width: 720px) {
 			.nav .links { gap: 16px; }
-			.contact-wrap { grid-template-columns: 1fr; }
 			.hero { padding: 60px 0 40px; }
 		}
 	</style>
@@ -332,29 +319,11 @@
 		<div class="container">
 			<h2>Get in touch</h2>
 			<p class="sub">Have a role or project in mind? I'd love to hear from you.</p>
-			<div class="contact-wrap">
-				<div class="contact-info">
-					<div class="row"><span>Email</span><a href="mailto:vlad.census@gmail.com">vlad.census@gmail.com</a></div>
-					<div class="row"><span>Phone</span><a href="tel:+972546305532">054-630-5532</a></div>
-					<div class="row"><span>Location</span>Ramat Ahail, Tel-Aviv</div>
-					<div class="row"><span>LinkedIn</span><a href="https://www.linkedin.com/in/vladp11">linkedin.com/in/vladp11</a></div>
-				</div>
-				<!-- Formspree: replace YOUR_ID with your Formspree form ID to receive submissions by email -->
-				<form action="https://formspree.io/f/YOUR_ID" method="POST">
-					<div class="field">
-						<label for="name">Name</label>
-						<input type="text" id="name" name="name" required />
-					</div>
-					<div class="field">
-						<label for="email">Email</label>
-						<input type="email" id="email" name="email" required />
-					</div>
-					<div class="field">
-						<label for="message">Message</label>
-						<textarea id="message" name="message" required></textarea>
-					</div>
-					<button type="submit" class="btn btn-primary">Send message</button>
-				</form>
+			<div class="contact-info">
+				<div class="row"><span>Email</span><a href="mailto:vlad.census@gmail.com">vlad.census@gmail.com</a></div>
+				<div class="row"><span>Phone</span><a href="tel:+972546305532">054-630-5532</a></div>
+				<div class="row"><span>Location</span>Ramat Ahail, Tel-Aviv</div>
+				<div class="row"><span>LinkedIn</span><a href="https://www.linkedin.com/in/vladp11">linkedin.com/in/vladp11</a></div>
 			</div>
 		</div>
 	</section>
