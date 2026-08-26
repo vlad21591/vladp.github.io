@@ -66,14 +66,36 @@
 		.nav .links a:hover { color: var(--text); text-decoration: none; }
 
 		/* Hero */
-		.hero { padding: 110px 0 80px; text-align: center; }
-		.hero h1 {
-			font-size: clamp(1.9rem, 4vw, 2.9rem); line-height: 1.2;
-			margin: 0 auto 20px; max-width: 820px;
+		.hero { padding: 120px 0 90px; text-align: center; position: relative; overflow: hidden; }
+		.hero::before {
+			content: ""; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+			width: 700px; height: 500px; pointer-events: none;
+			background: radial-gradient(circle, rgba(79,157,255,0.14), transparent 65%);
+			filter: blur(20px); z-index: 0;
 		}
-		.hero h1 .accent { color: var(--accent); }
+		.hero .container { position: relative; z-index: 1; }
+		.hero .eyebrow {
+			font-size: 0.85rem; font-weight: 700; letter-spacing: 4px;
+			color: var(--muted); text-transform: uppercase; margin-bottom: 22px;
+		}
+		.hero h1 {
+			font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.08;
+			font-weight: 800; letter-spacing: -1px;
+			margin: 0 auto 24px; max-width: 900px;
+		}
+		.hero h1 .line1 { color: var(--text); }
+		.hero h1 .line2 { color: var(--muted); font-weight: 700; }
+		.hero h1 .accent {
+			background: linear-gradient(120deg, #4f9dff, #8fd0ff);
+			-webkit-background-clip: text; background-clip: text;
+			-webkit-text-fill-color: transparent; color: var(--accent);
+		}
 		.hero p { color: var(--muted); font-size: 1.08rem; max-width: 620px; margin: 0 auto; }
-		.hero .avail { margin-top: 16px; color: var(--accent); font-weight: 600; }
+		.hero .avail {
+			margin-top: 20px; display: inline-block;
+			color: var(--accent); font-weight: 600; font-size: 0.95rem;
+			background: var(--accent-soft); padding: 8px 18px; border-radius: 999px;
+		}
 		.hero .cta { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
 		.btn {
@@ -81,18 +103,24 @@
 			font-weight: 600; font-size: 0.95rem; transition: all 0.18s ease;
 			border: 1px solid var(--border); cursor: pointer;
 		}
-		.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-		.btn-primary:hover { filter: brightness(1.08); text-decoration: none; }
+		.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 4px 18px rgba(79,157,255,0.25); }
+		.btn-primary:hover { filter: brightness(1.08); text-decoration: none; box-shadow: 0 6px 24px rgba(79,157,255,0.4); transform: translateY(-1px); }
 		.btn-ghost { background: transparent; color: var(--text); }
 		.btn-ghost:hover { background: var(--surface-2); text-decoration: none; }
 
 		/* Section headings */
 		.section { padding: 64px 0; }
 		.section h2 {
-			font-size: 1.8rem; margin-bottom: 8px;
-			display: inline-block;
+			font-size: 1.8rem; margin-bottom: 16px;
+			display: inline-block; position: relative; font-weight: 800; letter-spacing: -0.5px;
 		}
-		.section .sub { color: var(--muted); margin-bottom: 36px; }
+		.section h2::after {
+			content: ""; position: absolute; left: 0; bottom: -8px;
+			width: 46px; height: 3px; border-radius: 3px;
+			background: linear-gradient(90deg, var(--accent), #8fd0ff);
+		}
+		#contact h2::after { left: 50%; transform: translateX(-50%); }
+		.section .sub { color: var(--muted); margin-bottom: 36px; margin-top: 8px; }
 
 		/* Skills */
 		.skills-grid {
@@ -106,8 +134,13 @@
 			border-radius: var(--radius); padding: 22px;
 			display: flex; flex-direction: column; justify-content: flex-start;
 			align-items: center; text-align: center;
+			transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 		}
-		.skill-card h3 { font-size: 1rem; margin-bottom: 8px; }
+		.skill-card:hover {
+			transform: translateY(-4px); border-color: var(--accent);
+			box-shadow: 0 10px 30px rgba(79,157,255,0.12);
+		}
+		.skill-card h3 { font-size: 1rem; margin-bottom: 8px; color: var(--accent); }
 		.skill-card .skill-desc {
 			color: var(--muted); font-size: 0.9rem; line-height: 1.5;
 			margin-bottom: 16px;
@@ -116,7 +149,9 @@
 		.tag {
 			background: var(--accent-soft); color: var(--accent);
 			padding: 5px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
+			border: 1px solid transparent; transition: border-color 0.15s ease, background 0.15s ease;
 		}
+		.skill-card:hover .tag { border-color: rgba(79,157,255,0.35); }
 
 		/* Projects */
 		.projects {
@@ -127,13 +162,19 @@
 			background: var(--surface); border: 1px solid var(--border);
 			border-radius: var(--radius); overflow: hidden;
 			display: flex; flex-direction: column;
-			transition: transform 0.18s ease, border-color 0.18s ease;
+			transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 		}
-		.card:hover { transform: translateY(-4px); border-color: var(--accent); }
-		.card .thumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
-		.card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+		.card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 14px 34px rgba(0,0,0,0.4), 0 4px 20px rgba(79,157,255,0.12); }
+		.card .thumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); position: relative; }
+		.card .thumb::after {
+			content: ""; position: absolute; inset: 0;
+			background: linear-gradient(to top, rgba(22,27,34,0.55), transparent 55%);
+		}
+		.card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+		.card:hover .thumb img { transform: scale(1.06); }
 		.card .body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
-		.card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+		.card h3 { font-size: 1.15rem; margin-bottom: 10px; transition: color 0.15s ease; }
+		.card:hover h3 { color: var(--accent); }
 		.card .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 		.card .badge {
 			font-size: 0.72rem; font-weight: 600; color: var(--muted);
@@ -143,9 +184,18 @@
 		.card .actions { margin-top: 18px; }
 
 		/* Contact */
-		.contact-info p { color: var(--muted); margin-bottom: 16px; }
-		.contact-info .row { margin-bottom: 14px; }
-		.contact-info .row span { display: block; color: var(--text); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+		.contact-info { display: flex; flex-direction: column; gap: 12px; }
+		.contact-info .row {
+			background: var(--surface); border: 1px solid var(--border);
+			border-radius: 10px; padding: 12px 22px; min-width: 320px;
+			transition: border-color 0.15s ease;
+		}
+		.contact-info .row:hover { border-color: var(--accent); }
+		.contact-info .row span {
+			display: block; color: var(--muted); font-weight: 600; font-size: 0.72rem;
+			text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
+		}
+		.contact-info .row a { font-size: 1rem; }
 
 		/* Footer */
 		footer {
@@ -178,7 +228,8 @@
 	<!-- Hero -->
 	<section class="hero">
 		<div class="container">
-			<h1>Vlad — <span class="accent">Data Analyst</span> turning raw data into decisions that move the business.</h1>
+			<p class="eyebrow">VLAD — DATA ANALYST</p>
+			<h1>I find the <span class="accent">answers</span> in the numbers.</h1>
 			<p>
 				I'm a data analyst focused on marketing and product analytics — cleaning and preparing data,
 				building interactive dashboards, and running analysis to answer real business questions.
@@ -315,11 +366,11 @@
 	</section>
 
 	<!-- Contact -->
-	<section class="section" id="contact">
+	<section class="section" id="contact" style="text-align:center;">
 		<div class="container">
 			<h2>Get in touch</h2>
 			<p class="sub">Have a role or project in mind? I'd love to hear from you.</p>
-			<div class="contact-info">
+			<div class="contact-info" style="display:inline-block; text-align:center;">
 				<div class="row"><span>Email</span><a href="mailto:vlad.census@gmail.com">vlad.census@gmail.com</a></div>
 				<div class="row"><span>Phone</span><a href="tel:+972546305532">054-630-5532</a></div>
 				<div class="row"><span>Location</span>Ramat Ahail, Tel-Aviv</div>
